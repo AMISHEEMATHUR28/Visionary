@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VISIONARY - See the World Through Sound</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         /* General Reset */
         * {
@@ -15,55 +16,75 @@
             scroll-behavior: smooth;
         }
         body {
-            background: #0d1117;
-            color: #ffffff;
+            background: #121826;
+            color: #e0e0e0;
+            transition: background 0.5s ease-in-out;
         }
 
         /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
-            padding: 20px 10%;
             align-items: center;
-            background: #161b22;
+            padding: 15px 10%;
+            background: #1b2432;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
+        /* Logo */
         .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 60px; /* Adjusted for better fit */
+            width: auto;  /* Keeps aspect ratio */
+            margin-right: 10px;
+            border-radius: 10px; /* Optional: Rounded edges for better visuals */
+        }
+        .logo span {
             font-size: 1.5rem;
             font-weight: 600;
+            color: #00bcd4;
         }
+
+        /* Navbar Links */
         nav a {
-            color: #ffffff;
+            color: #e0e0e0;
             text-decoration: none;
             margin: 0 15px;
             font-weight: 400;
             transition: 0.3s;
         }
         nav a:hover {
-            color: #58a6ff;
+            color: #007acc;
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 150px 10%;
-            background: linear-gradient(180deg, #0d1117 50%, #161b22);
+            background: linear-gradient(180deg, #121826 50%, #1b2432);
             position: relative;
             overflow: hidden;
         }
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 600;
+            opacity: 0;
+            color: #00bcd4;
         }
         .hero p {
             font-size: 1.2rem;
             margin: 20px 0;
-            color: #b9b9b9;
+            color: #b0bec5;
+            opacity: 0;
         }
         .hero .cta {
-            background: #238636;
+            background: #007acc;
             padding: 15px 35px;
             font-size: 1.2rem;
             font-weight: 600;
@@ -73,9 +94,10 @@
             display: inline-block;
             transition: 0.3s;
             margin-top: 20px;
+            opacity: 0;
         }
         .hero .cta:hover {
-            background: #2ea043;
+            background: #0056b3;
         }
 
         /* Features Section */
@@ -86,6 +108,8 @@
         .features h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
+            opacity: 0;
+            color: #00bcd4;
         }
         .feature-cards {
             display: flex;
@@ -94,41 +118,36 @@
             flex-wrap: wrap;
         }
         .card {
-            background: #161b22;
+            background: #1b2432;
             padding: 30px;
             width: 300px;
             border-radius: 10px;
             text-align: center;
             transition: 0.3s;
-            border: 1px solid #30363d;
+            border: 1px solid #37474f;
+            opacity: 0;
+            transform: translateY(50px);
         }
         .card:hover {
             transform: scale(1.05);
-            border-color: #58a6ff;
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        .card p {
-            color: #b9b9b9;
+            border-color: #00bcd4;
         }
 
         /* Footer */
         footer {
-            background: #161b22;
+            background: #1b2432;
             text-align: center;
             padding: 20px;
             font-size: 0.9rem;
-            color: #b9b9b9;
-        }
-        footer a {
-            color: #58a6ff;
-            text-decoration: none;
+            color: #b0bec5;
+            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .logo img {
+                height: 50px; /* Smaller size for mobile */
+            }
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -137,13 +156,17 @@
                 align-items: center;
             }
         }
+
     </style>
 </head>
 <body>
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">VISIONARY</div>
+        <div class="logo">
+            <img src="logo.png" alt="Visionary Logo"> <!-- Replace with your logo file -->
+            <span>VISIONARY</span>
+        </div>
         <div>
             <a href="faq.html">FAQ</a>
             <a href="aboutus.html">About Us</a>
@@ -159,7 +182,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
+    <section class="features">
         <h2>Why Choose VISIONARY?</h2>
         <div class="feature-cards">
             <div class="card">
@@ -178,9 +201,18 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <p>Made with ❤️ by <a href="#">The Debuggers</a> | © 2025</p>
     </footer>
 
+    <script>
+        // GSAP Animations
+        gsap.to(".hero h1", { opacity: 1, y: -20, duration: 1 });
+        gsap.to(".hero p", { opacity: 1, delay: 0.5, duration: 1 });
+        gsap.to(".hero .cta", { opacity: 1, delay: 1, duration: 1 });
+        gsap.to(".features h2", { opacity: 1, duration: 1, delay: 1 });
+        gsap.to(".card", { opacity: 1, y: 0, stagger: 0.3, delay: 1.5 });
+
+    </script>
 </body>
 </html>
