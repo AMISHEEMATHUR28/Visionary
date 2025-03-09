@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISIONARY - See the World Through Sound</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #0d1117;
+            color: #ffffff;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 10%;
+            align-items: center;
+            background: #161b22;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #58a6ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 10%;
+            background: linear-gradient(180deg, #0d1117 50%, #161b22);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #b9b9b9;
+        }
+        .hero .cta {
+            background: #238636;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            border-radius: 8px;
+            display: inline-block;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .hero .cta:hover {
+            background: #2ea043;
+        }
+
+        /* Features Section */
+        .features {
+            text-align: center;
+            padding: 80px 10%;
+        }
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .feature-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #161b22;
+            padding: 30px;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #30363d;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #58a6ff;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #b9b9b9;
+        }
+
+        /* Footer */
+        footer {
+            background: #161b22;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #b9b9b9;
+        }
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .feature-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">VISIONARY</div>
+        <div>
+            <a href="faq.html">FAQ</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="index1.html" class="cta">Try Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>See the World Through Sound</h1>
+        <p>AI-powered accessibility for the visually impaired</p>
+        <a href="works.html" class="cta">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose VISIONARY?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>AI Object Detection</h3>
+                <p>Real-time recognition of objects and text using advanced AI.</p>
+            </div>
+            <div class="card">
+                <h3>Voice Assistance</h3>
+                <p>Interactive AI voice assistant to guide and describe surroundings.</p>
+            </div>
+            <div class="card">
+                <h3>Navigation & Mobility</h3>
+                <p>Turn-by-turn voice navigation for safe and independent travel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>Made with ❤️ by <a href="#">The Debuggers</a> | © 2025</p>
+    </footer>
+
+</body>
+</html>

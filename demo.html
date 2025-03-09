@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Navigation Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #0d1117;
+            color: #fff;
+            margin: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .video-container {
+            width: 100%;
+            position: relative;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .start-btn {
+            background: #238636;
+            color: white;
+        }
+        .alert {
+            background: red;
+            color: white;
+        }
+        #map {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AI Navigation & Object Detection Demo</h1>
+
+    <div class="container">
+        <h3>🎥 Real-Time Object Detection</h3>
+        <video id="video" autoplay></video>
+        <button class="start-btn" onclick="startDetection()">Start Object Detection</button>
+        <p id="object-result">Detected Objects: None</p>
+
+        <h3>📍 AI Navigation Assistance</h3>
+        <input type="text" id="destination" placeholder="Enter Destination">
+        <button onclick="getDirections()">Get Directions</button>
+        <div id="map"></div>
+        <p id="navigation-result">Navigation Details will appear here.</p>
+
+        <h3>🔊 AI Scene Description</h3>
+        <button onclick="fetchAIResponse()">Generate Scene Description</button>
+        <p id="ai-response">AI will describe the scene...</p>
+
+        <h3>📳 Vibration Alert</h3>
+        <button class="alert" onclick="vibrateAlert()">Trigger Alert</button>
+    </div>
+
+    <script>
+        // ✅ Start Object Detection (Placeholder for backend YOLO integration)
+        function startDetection() {
+            document.getElementById("object-result").innerText = "Detecting objects...";
+            fetch("object-detection.php") // Calls backend PHP API
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("object-result").innerText = "Detected Objects: " + data;
+                });
+        }
+
+        // ✅ Google Maps Navigation
+        function getDirections() {
+            let destination = document.getElementById("destination").value;
+            if (!destination) {
+                alert("Please enter a destination!");
+                return;
+            }
+            fetch(`get-directions.php?destination=${encodeURIComponent(destination)}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navigation-result").innerText = data;
+                });
+        }
+
+        // ✅ AI Scene Description (Mistral-7B)
+        function fetchAIResponse() {
+            fetch("ai-description.php") // Calls backend API
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("ai-response").innerText = data;
+                    let speech = new SpeechSynthesisUtterance(data);
+                    window.speechSynthesis.speak(speech);
+                });
+        }
+
+        // ✅ Vibration Alert for Mobile
+        function vibrateAlert() {
+            if (navigator.vibrate) {
+                navigator.vibrate([300, 100, 300]); // Vibrate twice
+                alert("⚠️ Vibration Alert Triggered!");
+            } else {
+                alert("Vibration not supported on this device.");
+            }
+        }
+    </script>
+
+</body>
+</html>
